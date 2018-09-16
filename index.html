@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>PHP+JS+HTML test Andreychenko Victor</title>
+</head>
+<body>
+<div class="timing">
+<p>Started at 04.09.2018 10:42<br>
+    до 13,25 пришел к выводу, что watchers = stargazers_count = followers<br>
+    до 14,00 разобрался как включить PHP на OpenServer localhost. Пауза<br>
+    05.09.2018 c 14,25 до 16,15  окончил js передает данные на php и тут они принимаются<br>
+    16,15 - 17.50  методом подбора угадал, как сделать комплексный запрос типа followers:1400 +forks:447<br>
+    17.50 - 19.40 безуспешно читал документацию github, как отправить мульти-запрос<br>
+    написал письмо в github получил неверный ответ такой:,<br>
+    https://api.github.com/search/repositories?q=followers=600&size=500<br>
+    Но это ошибка. Так вызывается только followers, а size игнорируется<br>
+    16.09.2018 18.48 -  написал php.<br>
+    18.48 - 20.56 оформление внешнего вида странички ввода и результата<br>
+    Итого потратил рабочего времени: 10 ч 41 мин
+</p>
+</div>
+<h1>1. HTML + JS</h1>
+<div class="container">
+    <form method="get" action="php/searhGit.php">
+        <div class="header">
+            <select class="inputField" id="field" name="field">
+                    <option value="" disabled selected>Field...</option>
+                    <option value="size">size</option>
+                    <option value="forks">forks</option>
+                    <option value="stars">stars</option>
+                    <!--<option value="followers">followers</option>-->
+                    <!--followers = stars-->
+            </select>
+            <select class="inputField" id="operator" name="operator">
+                <option value="" disabled selected>Operator...</option>
+                <option value="more">&gt;</option>
+                <option value="equal">=</option>
+                <option value="less">&lt;</option>
+            </select>
+            <input class="inputField"  placeholder="Value..." id="value" name="value" type="text">
+            <button class="" id="deleteRule" type="button" onclick="deleteLastRule()">Delete</button>
+        </div>
+        <div class="footer">
+            <div>
+                <button id="apply" type="submit">Apply</button>
+                <button id="clear" type="reset" onclick="clearAllRules()">Clear</button>
+            </div>
+            <button id="addRule" type="button" onclick="addNewRule()">Add Rule</button>
+        </div>
+        <input id="quereArraySend" name="quereArraySend" type="hidden" value="">
+    </form>
+    <div id="viewPlace"></div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
